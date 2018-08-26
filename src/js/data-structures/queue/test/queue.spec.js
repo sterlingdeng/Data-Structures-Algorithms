@@ -13,7 +13,7 @@ describe("Queue", () => {
     expect(queue.size()).to.equal(0);
   });
 
-  it("queue and dequeue elements", () => {
+  it("should queue and dequeue elements", () => {
     queue.queue(4);
     expect(queue.size()).to.equal(1);
     expect(queue.peek()).to.equal(4);
@@ -22,7 +22,7 @@ describe("Queue", () => {
     expect(queue.dequeue()).to.equal(undefined);
   });
 
-  it("queue and clear", () => {
+  it("should queue and clear", () => {
     queue.queue(1);
     queue.queue(2);
     queue.queue("a");
@@ -31,7 +31,7 @@ describe("Queue", () => {
     expect(queue.clear().size()).to.equal(0);
   });
 
-  it("to string", () => {
+  it("should convert to string", () => {
     queue.queue(1);
     queue.queue(2);
     queue.queue(3);
