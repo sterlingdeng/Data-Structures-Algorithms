@@ -1,4 +1,4 @@
-const Stack = require("../data-structures/stack");
+const Stack = require("../data-structures/stack/stack");
 let arg = process.argv.slice(2);
 
 /**

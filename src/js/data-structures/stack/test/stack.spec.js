@@ -1,6 +1,6 @@
 const mocha = require("mocha");
 const chai = require("chai");
-const Stack = require("../../../src/js/data-structures/stack");
+const Stack = require("../stack");
 const expect = chai.expect;
 
 describe("Stack", () => {

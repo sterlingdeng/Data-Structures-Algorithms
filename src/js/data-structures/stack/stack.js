@@ -1,17 +1,3 @@
-/**
- *  The following is an implementation of a Stack datastucture using objects, rather than
- *  an array.
- *
- *  push()       method adds a new element to the top of the stack
- *  pop()        removes the top element from the stack
- *  peek()       returns the top element of the stack. stack is not modified
- *  isEmpty()    returns  true if stack does not contain elements
- *  clear()      removes all elements from the stack
- *  size()       returns the number of elements that the stack contains
- *  toString()   converts the items to string, joined by a comma
- *
- */
-
 class Stack {
   constructor() {
     this.count = 0;
