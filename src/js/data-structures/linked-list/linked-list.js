@@ -37,15 +37,14 @@ class LinkedList {
 
     if (this.count === 0) {
       this.head = node;
-      this.count++;
     } else {
       let lastNode = this.head;
       while (lastNode.next !== undefined) {
         lastNode = lastNode.next;
       }
       lastNode.next = node;
-      this.count++;
     }
+    this.count++;
   }
 
   insert(value, position) {
@@ -129,12 +128,10 @@ class LinkedList {
     }
     return stringObj;
   }
+  clear() {
+    this.head = undefined;
+    this.count = 0;
+  }
 }
-
-linkedList = new LinkedList();
-linkedList.insert(10, 0);
-linkedList.insert(20, 1);
-linkedList.insert(30, 1);
-console.log(linkedList.toString());
 
 module.exports = { Node, LinkedList };
