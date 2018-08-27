@@ -7,24 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "clean": "rm -rf ./dist ./coverage ./.nyc_output ./coverage.lcov ./mochawesome-report",
-    "build:js": "babel src/js -d dist/js",
-    "build:ts": "tsc -p ./ --rootDir ./src/ts",
-    "build": "npm run build:js && npm run build:ts",
-    "lint:js": "eslint src/js && eslint test/js",
-    "lint:ts": "tslint -c tslint.json 'src/ts/**/*.ts' && tslint -c tslint.json 'test/ts/**/*.ts'",
-    "lint": "npm run lint:js && npm run lint:ts",
-    "test:js": "mocha --compilers js:babel-core/register ./test/js  --recursive --reporter mochawesome",
+    "test:js": "mocha ./src/js  --recursive",
     "test:ts": "mocha -r ts-node/register ./test/ts/**/*.spec.ts ./test/ts/**/**/*.spec.ts --recursive",
-    "test": "npm run test:js && npm run test:ts",
-    "dev": "npm run clean && npm run lint && npm run webpack && npm run generate-report",
-    "dev2": "npm run clean && npm run lint && npm run webpack && npm run generate-report2",
-    "coverage": "npm run generate-report && nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "generate-report": "nyc --report-dir coverage npm run test && nyc report --reporter=text",
-    "generate-report2": "nyc --report-dir coverage npm run test",
-    "go": "npm run clean && npm run lint && npm run build && npm run test",
-    "webpack": "webpack --env build",
-    "serve": "http-server"
+    "test": "npm run test:js"
   },
   "repository": {
     "type": "git",
