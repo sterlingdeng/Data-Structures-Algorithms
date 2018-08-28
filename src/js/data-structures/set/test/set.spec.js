@@ -2,7 +2,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const Set = require("../set");
 
-describe("set data structure", () => {
+describe("Sets", () => {
   let set;
   beforeEach(() => {
     set = new Set();

@@ -1,4 +1,3 @@
-const mocha = require("mocha");
 const chai = require("chai");
 const Stack = require("../stack");
 const expect = chai.expect;

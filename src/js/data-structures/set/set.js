@@ -1,6 +1,7 @@
 class Set {
-  constructor() {
+  constructor(values = null) {
     this.items = {};
+    this.add(values);
   }
 
   has(element) {
@@ -8,10 +9,18 @@ class Set {
   }
 
   add(element) {
-    if (this.has(element)) {
+    if (!element) {
       return false;
     }
-    this.items[element] = element;
+    if (typeof element === "object") {
+      element.forEach(value => {
+        this.add(value);
+      });
+    } else {
+      if (!this.has(element)) {
+        this.items[element] = element;
+      }
+    }
   }
 
   delete(element) {
@@ -39,14 +48,9 @@ class Set {
   }
 
   union(otherSet) {
-    let unionSet = new Set();
-    this.values().forEach(value => {
-      unionSet.add(value);
-    });
-    otherSet.values().forEach(value => {
-      unionSet.add(value);
-    });
-    return unionSet;
+    let setA = this.values();
+    let setB = otherSet.values();
+    return new Set([...setA, ...setB]);
   }
 
   intersection(otherSet) {
@@ -84,4 +88,15 @@ class Set {
   }
 }
 
+let set = new Set();
+let set2 = new Set();
+set.add(1);
+set.add(2);
+set.add(3);
+set2.add("a");
+set2.add("b");
+set2.add("c");
+set2.add(1);
+let unionSet = set.union(set2);
+console.log(unionSet.values());
 module.exports = Set;
