@@ -122,22 +122,4 @@ class BinarySearchTree {
   }
 }
 
-// const newTree = new BinarySearchTree();
-// newTree.insert(10);
-// newTree.insert(5);
-// newTree.insert(6);
-// newTree.insert(4);
-// newTree.insert(20);
-// newTree.insert(15);
-// newTree.insert(116);
-// newTree.insert(12);
-// newTree.insert(11);
-// console.log(newTree.search(4));
-// console.log(newTree.search(2));
-// console.log(newTree.search(116));
-// console.log(newTree.search(999));
-// console.log(newTree.search(10));
-// newTree.clear();
-// console.log(newTree.search(10));
-
 module.exports = { BinarySearchTree };
