@@ -31,4 +31,7 @@ describe("Stack", () => {
     bst.clear();
     expect(bst.search(10)).to.equal(false);
   });
+  it("should remove nothing", () => {
+    expect(bst.remove(0)).to.equal(undefined);
+  });
 });

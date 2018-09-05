@@ -117,6 +117,47 @@ class BinarySearchTree {
     return false;
   }
 
+  remove(key) {
+    this.root = this.removeNode(this.root, key);
+  }
+
+  removeNode(node, key) {
+    // Scenario 0 : if node is not found
+    if (node === undefined) return undefined;
+
+    if (key < node.value) {
+      node.left = this.removeNode(node.left, key);
+      return node;
+    } else if (key > node.value) {
+      node.right = this.removeNode(node.right, key);
+      return node;
+    }
+
+    if (node.value === key) {
+      // Scenario 1 : if not does not have children
+      if (node.left === undefined && node.right === undefined) {
+        node = undefined;
+        return node;
+      }
+      // Scenario 2 : if it has 1 child node, left or right
+
+      if (node.left === undefined) {
+        return node.right;
+      } else if (node.right === undefined) {
+        return node.left;
+      }
+
+      // Scenario 3 : if node has 2 children, find the lowest value in that subtree to replace
+      if (node.left !== undefined && node.right !== undefined) {
+        let temp = this.returnLowestNode(node.right);
+        node.value = temp;
+        node.right = this.removeNode(node.right, temp);
+        return node;
+      }
+    }
+    return node;
+  }
+
   clear() {
     this.root = undefined;
   }
