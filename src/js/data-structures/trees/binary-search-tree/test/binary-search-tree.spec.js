@@ -22,6 +22,7 @@ describe("Stack", () => {
   it("should test find max", () => {
     expect(bst.returnGreatest()).to.equal(116);
   });
+
   it("should test find value", () => {
     expect(bst.search(4)).to.equal(true);
     expect(bst.search(2)).to.equal(false);
@@ -31,7 +32,14 @@ describe("Stack", () => {
     bst.clear();
     expect(bst.search(10)).to.equal(false);
   });
+
   it("should remove nothing", () => {
     expect(bst.remove(0)).to.equal(undefined);
+  });
+
+  it("should test node height", () => {
+    expect(bst.getHeight()).to.equal(4);
+    bst.clear();
+    expect(bst.getHeight()).to.equal(-1);
   });
 });
