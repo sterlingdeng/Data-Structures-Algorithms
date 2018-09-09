@@ -112,13 +112,21 @@ class AVLTree extends BinarySearchTree {
       }
     }
     // once inserted, evaluate whether a rotation is needed
-    if (this.getBalanceFactor() === this.balanceFactor.UNBALANCED_LEFT) {
-      this.rotateRR();
-    } else if (
-      this.getBalanceFactor() === this.balanceFactor.UNBALANCED_RIGHT
-    ) {
-      this.rotateLL();
+    const balanceFactor = this.getNodeBalanceFactor(node);
+    if (balanceFactor === this.balanceFactor.UNBALANCED_LEFT) {
+      if (key > node.left.value) {
+        this.rotateLR();
+      } else {
+        this.rotateRR();
+      }
+    } else if (balanceFactor === this.balanceFactor.UNBALANCED_RIGHT) {
+      if (key < node.right.value) {
+        this.rotateRL();
+      } else {
+        this.rotateRR();
+      }
     }
+    return node;
   }
 }
 

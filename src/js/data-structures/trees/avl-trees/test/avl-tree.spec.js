@@ -96,9 +96,20 @@ describe("avl-tree test", () => {
     expect(avl.getBalanceFactor()).to.equal(1);
     avl.AVLInsert(1);
     expect(avl.getBalanceFactor()).to.equal(0);
-    avl.AVLInsert(6);
-    expect(avl.getBalanceFactor()).to.equal(-1);
-    avl.AVLInsert(7);
-    expect(avl.getBalanceFactor()).to.equal(0);
+  });
+  it("should test avl insert 2", () => {
+    let arr = [];
+    avl = new AVLTree();
+    avl.AVLInsert(50);
+    avl.AVLInsert(30);
+    avl.AVLInsert(70);
+    avl.AVLInsert(10);
+    avl.AVLInsert(40);
+    avl.AVLInsert(35);
+
+    avl.preOrderTraverse(e => {
+      arr.push(e);
+    });
+    expect(arr).to.deep.equal([40, 30, 10, 35, 50, 70]);
   });
 });
