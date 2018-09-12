@@ -54,18 +54,40 @@ class Dictionary {
     return Object.keys(this.table);
   }
 
+  values() {
+    const values = [];
+    Object.values(this.table).forEach(valuePair => {
+      values.push(valuePair.value);
+    });
+    return values;
+  }
+
   clear() {
     this.table = {};
   }
 
   size() {
-    Object.keys(this.table).length;
+    return Object.keys(this.table).length;
+  }
+
+  forEach(callback) {
+    // callback(key, value)
+    if (this.isEmpty()) {
+      return false;
+    }
+
+    const values = this.value();
+
+    for (let i = 0; i < values.length; i++) {
+      callback(values[i].key, values[i].value);
+    }
   }
 
   toString(value) {
     if (typeof value !== "string") {
       return `${value}`;
     }
+    return value;
   }
 }
 
@@ -79,3 +101,5 @@ class ValuePair {
     return `[#${key}: ${value}]`;
   }
 }
+
+module.exports = { Dictionary };
