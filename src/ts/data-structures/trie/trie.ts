@@ -33,7 +33,9 @@ class Trie {
       if (!nextPtr) {
         return;
       }
+
       dfsDel(nextPtr, idx + 1);
+
       ptr.removeChild(characters[idx]);
     };
 
