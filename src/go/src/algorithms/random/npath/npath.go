@@ -1,5 +1,7 @@
 package npath
 
+// finds the total number of unique paths from one corner of an NxN board to the farther corner
+
 type board struct {
 	board [][]bool
 }
@@ -30,15 +32,13 @@ func nPath(size int) int {
 	if size == 1 {
 		return 1
 	}
-
 	matrix := &board{nil}
 	matrix.makeBoard(size)
 
-	return pathRunner(0, 0, matrix)
-
+	return recursivePathRunner(0, 0, matrix)
 }
 
-func pathRunner(i int, j int, b *board) int {
+func recursivePathRunner(i int, j int, b *board) int {
 	// Base Cases:
 	// If we go off the board, return 0
 	if i < 0 || j < 0 || i > len(b.board)-1 || j > len(b.board)-1 {
@@ -57,13 +57,13 @@ func pathRunner(i int, j int, b *board) int {
 	// Toggle hasBeenVisited to true
 	b.togglePiece(i, j)
 	// Move Up
-	counter += pathRunner(i-1, j, b)
+	counter += recursivePathRunner(i-1, j, b)
 	// Move Down
-	counter += pathRunner(i+1, j, b)
+	counter += recursivePathRunner(i+1, j, b)
 	// Move Left
-	counter += pathRunner(i, j-1, b)
+	counter += recursivePathRunner(i, j-1, b)
 	// Move Right
-	counter += pathRunner(i, j+1, b)
+	counter += recursivePathRunner(i, j+1, b)
 	// Toggle hasBeenVisited to false as we step out of current (j,i) location
 	b.togglePiece(i, j)
 
